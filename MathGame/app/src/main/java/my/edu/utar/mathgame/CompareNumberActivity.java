@@ -88,11 +88,11 @@ public class CompareNumberActivity extends Activity {
 
                 // Refresh after showing result (optional delay for feedback)
                 new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        generateAndCompareNumbers(circle1, circle2); // Call again to generate new question
-                    }
-                }, 300); // Delay for 1 second (adjust as needed)
+                @Override
+                public void run() {
+                    generateAndCompareNumbers(circle1, circle2); // Call again to generate new question
+                }
+            }, 300); // Delay for 1 second (adjust as needed)
             }
         };
     }
