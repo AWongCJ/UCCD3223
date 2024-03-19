@@ -60,7 +60,6 @@ public class CompareNumberActivity extends Activity {
         circle2.setText(String.valueOf(num2));
 
         ansListener = new View.OnClickListener() {
-
             public void onClick(View v) {
 
                 if (((num1 > num2)&&(v.getId() == R.id.circleView1)) ||
