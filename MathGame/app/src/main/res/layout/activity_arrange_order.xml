@@ -145,7 +145,7 @@
             <TextView
                 android:id="@+id/response"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="30sp"

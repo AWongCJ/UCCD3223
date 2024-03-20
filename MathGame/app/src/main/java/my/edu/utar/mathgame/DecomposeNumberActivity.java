@@ -25,6 +25,8 @@ public class DecomposeNumberActivity extends Activity {
     private LinearLayout contentOfCircle;
     private int topNumber;
     View.OnClickListener ansListener;
+    int waitingTime1 =1000;
+    int waitingTime2 =1800;
     int[] randNum = new int[2];
     private ArrayList<Integer> options; // List to store options for user selection
 
@@ -76,7 +78,9 @@ public class DecomposeNumberActivity extends Activity {
 
                         if (numCirclesClicked == 2) {
                             circles[1].setBackgroundColor(Color.parseColor("#ffadad"));
-                            eqn.setTextSize(25);
+                            eqn.setTextSize(28);
+                            eqn.setTextColor(Color.WHITE);
+                            eqn.setBackgroundColor(Color.BLUE);
                             eqn.setText("Equation: "
                                     + String.valueOf(circleValues[0])
                                     + "="
@@ -86,12 +90,14 @@ public class DecomposeNumberActivity extends Activity {
                                     + String.valueOf(circleValues[randNum[1]]));
                             if (result == circleValues[0]) {
                                 tvResult.setText("Correct!");
+                                tvResult.setTextSize(45);
                                 tvResult.setBackgroundColor(Color.GREEN);
+                                refreshActivity(v, waitingTime1);
                             } else {
                                 tvResult.setText("Try Again!");
                                 tvResult.setBackgroundColor(Color.RED);
+                                refreshActivity(v, waitingTime2);
                             }
-                            refreshActivity(v);
                         }
                     }
                 }
@@ -108,7 +114,9 @@ public class DecomposeNumberActivity extends Activity {
 
                         if (numCirclesClicked == 2) {
                             circles[2].setBackgroundColor(Color.parseColor("#ffadad"));
-                            eqn.setTextSize(25);
+                            eqn.setTextSize(28);
+                            eqn.setTextColor(Color.WHITE);
+                            eqn.setBackgroundColor(Color.BLUE);
                             eqn.setText("Equation: "
                                     + String.valueOf(circleValues[0])
                                     + "="
@@ -119,11 +127,12 @@ public class DecomposeNumberActivity extends Activity {
                             if (result == circleValues[0]) {
                                 tvResult.setText("Correct!");
                                 tvResult.setBackgroundColor(Color.GREEN);
+                                refreshActivity(v, waitingTime1);
                             } else {
                                 tvResult.setText("Try Again!");
                                 tvResult.setBackgroundColor(Color.RED);
+                                refreshActivity(v, waitingTime2);
                             }
-                            refreshActivity(v);
                         }
                     }
                 }
@@ -140,7 +149,9 @@ public class DecomposeNumberActivity extends Activity {
 
                         if (numCirclesClicked == 2) {
                             circles[3].setBackgroundColor(Color.parseColor("#ffadad"));
-                            eqn.setTextSize(25);
+                            eqn.setTextSize(28);
+                            eqn.setTextColor(Color.WHITE);
+                            eqn.setBackgroundColor(Color.BLUE);
                             eqn.setText("Equation: "
                                     + String.valueOf(circleValues[0])
                                     + "="
@@ -151,13 +162,13 @@ public class DecomposeNumberActivity extends Activity {
                             if (result == circleValues[0]) {
                                 tvResult.setText("Correct!");
                                 tvResult.setBackgroundColor(Color.GREEN);
+                                refreshActivity(v, waitingTime1);
                             } else {
                                 tvResult.setText("Try Again!");
                                 tvResult.setBackgroundColor(Color.RED);
+                                refreshActivity(v, waitingTime2);
                             }
                         }
-                        refreshActivity(v);
-
                     }
                 }
             }
@@ -196,7 +207,7 @@ public class DecomposeNumberActivity extends Activity {
         return new Random().nextInt(3)+1;
     }
 
-    public void refreshActivity (View v){
+    public void refreshActivity (View v, int waitingTime){
 
         Intent intent = getIntent();
         new Handler().postDelayed(new Runnable() {
@@ -205,7 +216,7 @@ public class DecomposeNumberActivity extends Activity {
                 finish(); // Call again to generate new question
                 startActivity(intent);
             }
-        }, 1000);
+        }, waitingTime);
 
 
     }

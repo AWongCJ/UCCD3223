@@ -127,8 +127,9 @@ public class ArrangeOrderActivity extends Activity {
 
             if (emptyCircleIndex == 2){
 
-                if ((circleValues[0] < circleValues[1]) && (circleValues[1] < circleValues[2])) {
-
+                res.setTextSize(45);
+                if ((circleValues[0] < circleValues[1]) &&
+                        (circleValues[1] < circleValues[2])) {
                     res.setBackgroundColor(Color.GREEN);
                     res.setText("Correct!");
                 } else {

@@ -83,7 +83,7 @@ public class CompareNumberActivity extends Activity {
 //                        tvResult.setBackgroundColor(Color.GREEN);
 //                        tvResult.setText("Correct!");
 //                }
-                tvResult.setTextSize(30);
+                tvResult.setTextSize(45);
 
                 // Refresh after showing result (optional delay for feedback)
                 new Handler().postDelayed(new Runnable() {
