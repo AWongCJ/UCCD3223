@@ -5,8 +5,10 @@ import static java.lang.String.valueOf;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Pair;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -71,12 +73,9 @@ public class DecomposeNumberActivity extends Activity {
                         result = result + circleValues[1];
                         numCirclesClicked++;
                         circles[1].setBackgroundColor(Color.parseColor("#ffadad"));
-                        eqn.setText(String.valueOf(numCirclesClicked));
 
                         if (numCirclesClicked == 2) {
                             circles[1].setBackgroundColor(Color.parseColor("#ffadad"));
-                            eqn.setText(String.valueOf(numCirclesClicked));
-
                             eqn.setTextSize(25);
                             eqn.setText("Equation: "
                                     + String.valueOf(circleValues[0])
@@ -92,6 +91,7 @@ public class DecomposeNumberActivity extends Activity {
                                 tvResult.setText("Try Again!");
                                 tvResult.setBackgroundColor(Color.RED);
                             }
+                            refreshActivity(v);
                         }
                     }
                 }
@@ -105,12 +105,9 @@ public class DecomposeNumberActivity extends Activity {
                         result = result + circleValues[2];
                         numCirclesClicked++;
                         circles[2].setBackgroundColor(Color.parseColor("#ffadad"));
-                        eqn.setText(String.valueOf(numCirclesClicked));
 
                         if (numCirclesClicked == 2) {
                             circles[2].setBackgroundColor(Color.parseColor("#ffadad"));
-                            eqn.setText(String.valueOf(numCirclesClicked));
-
                             eqn.setTextSize(25);
                             eqn.setText("Equation: "
                                     + String.valueOf(circleValues[0])
@@ -126,6 +123,7 @@ public class DecomposeNumberActivity extends Activity {
                                 tvResult.setText("Try Again!");
                                 tvResult.setBackgroundColor(Color.RED);
                             }
+                            refreshActivity(v);
                         }
                     }
                 }
@@ -139,12 +137,9 @@ public class DecomposeNumberActivity extends Activity {
                         result = result + circleValues[3];
                         numCirclesClicked++;
                         circles[3].setBackgroundColor(Color.parseColor("#ffadad"));
-                        eqn.setText(String.valueOf(numCirclesClicked));
 
                         if (numCirclesClicked == 2) {
                             circles[3].setBackgroundColor(Color.parseColor("#ffadad"));
-                            eqn.setText(String.valueOf(numCirclesClicked));
-
                             eqn.setTextSize(25);
                             eqn.setText("Equation: "
                                     + String.valueOf(circleValues[0])
@@ -161,6 +156,8 @@ public class DecomposeNumberActivity extends Activity {
                                 tvResult.setBackgroundColor(Color.RED);
                             }
                         }
+                        refreshActivity(v);
+
                     }
                 }
             }
@@ -197,6 +194,20 @@ public class DecomposeNumberActivity extends Activity {
     private int generateRandomNumberSmall() {
         // Adjust range as needed (e.g., 1 to 100)
         return new Random().nextInt(3)+1;
+    }
+
+    public void refreshActivity (View v){
+
+        Intent intent = getIntent();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finish(); // Call again to generate new question
+                startActivity(intent);
+            }
+        }, 1000);
+
+
     }
 
 }
