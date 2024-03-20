@@ -1,26 +1,18 @@
-
 package my.edu.utar.mathgame;
-
 import static java.lang.String.valueOf;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Pair;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 public class DecomposeNumberActivity extends Activity {
-
     private TextView tv, tvResult;
     private LinearLayout contentOfCircle;
     private int topNumber;
@@ -29,14 +21,10 @@ public class DecomposeNumberActivity extends Activity {
     int waitingTime2 =1800;
     int[] randNum = new int[2];
     private ArrayList<Integer> options; // List to store options for user selection
-
     private static final int NUM_CIRCLES = 4;
-    //private static final int ANIMATION_DURATION = 200; // milliseconds
-
     private TextView[] circles;
     private int[] circleValues;
     int numCirclesClicked = 0, result = 0;
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +33,8 @@ public class DecomposeNumberActivity extends Activity {
 
         tv = findViewById(R.id.activityTitle);
         contentOfCircle = findViewById(R.id.contentArea);
-        TextView eqn = findViewById(R.id.equation); // Assuming the correct answer layout has id "correctAnswer"
+        TextView eqn = findViewById(R.id.equation);
         tvResult = findViewById(R.id.response);
-
 
         tv.setBackgroundColor(Color.parseColor("#9bf6ff"));
         tv.setText("\nChoose 2 compositions of the number!");
@@ -60,7 +47,6 @@ public class DecomposeNumberActivity extends Activity {
         circles = new TextView[NUM_CIRCLES];
         circleValues = new int[NUM_CIRCLES];
 
-        // Find circle TextViews directly by their IDs (assuming unique IDs are assigned)
         circles[0] = findViewById(R.id.circleView1);
         circles[1] = findViewById(R.id.circleView2);
         circles[2] = findViewById(R.id.circleView3);
@@ -177,9 +163,6 @@ public class DecomposeNumberActivity extends Activity {
     }
 
     private void initializeCircles() {
-
-        //int[] randNum = new int[2];
-
         do {
             for (int i = 1; i < 4; i++) {
                 circleValues[i] = generateRandomNumber();
@@ -207,7 +190,7 @@ public class DecomposeNumberActivity extends Activity {
         return new Random().nextInt(3)+1;
     }
 
-    public void refreshActivity (View v, int waitingTime){
+    public void refreshActivity (View v, int waitingTime) {
 
         Intent intent = getIntent();
         new Handler().postDelayed(new Runnable() {
@@ -217,9 +200,6 @@ public class DecomposeNumberActivity extends Activity {
                 startActivity(intent);
             }
         }, waitingTime);
-
-
     }
-
 }
 

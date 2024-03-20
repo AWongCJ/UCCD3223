@@ -1,7 +1,4 @@
 package my.edu.utar.mathgame;
-
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,46 +6,30 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import java.util.Random;
 
 public class ArrangeOrderActivity extends Activity {
-
     TextView tv, tvResult;
     View.OnClickListener ansListener;
     LinearLayout contentOfCircle;
     private static final int NUM_CIRCLES = 6;
     private static final int NUM_EMPTY_CIRCLES = 3;
-    //private static final int ANIMATION_DURATION = 200; // milliseconds
-
     private TextView[] circles;
     private int[] circleValues;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arrange_order);
 
-
         tv = findViewById(R.id.activityTitle);
         contentOfCircle = findViewById(R.id.contentArea);
-
-
         tv.setBackgroundColor(Color.parseColor("#caffbf"));
         tv.setText("Make the 3 numbers in ascending order!");
         tv.setTextSize(30);
 
         TextView res = findViewById(R.id.response);
         res.setBackgroundColor(Color.parseColor("#caffbf"));
-
         contentOfCircle.setBackgroundColor(Color.parseColor("#caffbf"));
-
         circles = new TextView[NUM_CIRCLES];
         circleValues = new int[NUM_CIRCLES];
 
@@ -72,7 +53,6 @@ public class ArrangeOrderActivity extends Activity {
             });
         }
     }
-
     private void initializeCircles() {
         for (int i = 0; i < NUM_CIRCLES; i++) {
             if (i < NUM_EMPTY_CIRCLES) {
@@ -84,12 +64,10 @@ public class ArrangeOrderActivity extends Activity {
             }
         }
     }
-
     private int generateRandomNumber() {
         // Adjust range as needed (e.g., 1 to 100)
         return new Random().nextInt(100) + 1;
     }
-
     private void moveCircleUp(View v) {
         TextView res = findViewById(R.id.response);
 
@@ -100,7 +78,6 @@ public class ArrangeOrderActivity extends Activity {
                 break;
             }
         }
-
         if (clickedCircleIndex != -1) {
             // Find first empty circle from top
             int emptyCircleIndex = -1;
@@ -110,23 +87,16 @@ public class ArrangeOrderActivity extends Activity {
                     break;
                 }
             }
-
             if (emptyCircleIndex != -1) {
                 // Swap values
                 circleValues[emptyCircleIndex] = circleValues[clickedCircleIndex];
                 circleValues[clickedCircleIndex] = 0;
-
-                // Animate circle movement
-                //animateCircleMovement(circles[clickedCircleIndex], circles[emptyCircleIndex]);
-
                 // Update UI after animation
                 circles[emptyCircleIndex].setText(String.valueOf(circleValues[emptyCircleIndex]));
                 circles[clickedCircleIndex].setText("");
             }
 
-
             if (emptyCircleIndex == 2){
-
                 res.setTextSize(45);
                 if ((circleValues[0] < circleValues[1]) &&
                         (circleValues[1] < circleValues[2])) {
@@ -139,16 +109,11 @@ public class ArrangeOrderActivity extends Activity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
                         initializeCircles();
                         // Call again to generate new question
                     }
                 }, 800);
-
             }
-
         }
-
-         // Delay for 0.3 second (adjust as needed)
     }
 }
